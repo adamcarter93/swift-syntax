@@ -10,21 +10,13 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Foundation
+import SwiftSyntax
+import XCTest
 
-/// An abstraction for sanitized values on a token.
-public struct Identifier: Equatable {
-  /// The sanitized `text` of a token.
-  public let name: String
+class TokenSyntaxTests: XCTestCase {
 
-  public init(_ token: TokenSyntax) {
-    let text = token.text
-
-    self.name =
-      if text.contains("`") {
-        text.trimmingCharacters(in: CharacterSet(charactersIn: "`"))
-      } else {
-        text
-      }
+  public func testTokenSyntaxIdentifier() {
+    let tokenSyntax = TokenSyntax(stringLiteral: "sometoken")
+    XCTAssertEqual(tokenSyntax.identifier, Identifier(tokenSyntax))
   }
 }
