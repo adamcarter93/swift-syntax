@@ -13,7 +13,7 @@
 import Foundation
 
 /// An abstraction for sanitized values on a token.
-public struct Identifier: Equatable {
+public struct Identifier: Equatable, Hashable, Sendable {
   /// The sanitized `text` of a token.
   public let name: String
 
